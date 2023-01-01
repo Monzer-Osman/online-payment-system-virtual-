@@ -5,6 +5,7 @@ import com.Fawry.payment_system.Repositories.TransactionRepository;
 import com.Fawry.payment_system.enums.TransactionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class TransactionService{
@@ -18,5 +19,9 @@ public class TransactionService{
     public TransactionStatus newPaymentTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
         return transaction.getTransactionStatus();
+    }
+
+    public List<Transaction> getAllTransactions() {
+        return transactionRepository.findAll();
     }
 }

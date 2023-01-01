@@ -23,7 +23,7 @@ public class PaymentController {
     }
 
     @GetMapping("/choose-payment-method/{paymentMethod}")
-    public String paymentMethod(@PathVariable String paymentMethod){
+    public java.lang.String paymentMethod(@PathVariable java.lang.String paymentMethod){
         if(paymentMethod.equals("credit-card")){
             return "redirect::/Fawry-System/payment-services/credit-card/pay";
         }

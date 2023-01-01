@@ -18,10 +18,14 @@ public class TransactionService{
 
     public TransactionStatus newPaymentTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
-        return transaction.getTransactionStatus();
+        return TransactionStatus.valueOf(transaction.getTransactionStatus());
     }
 
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
+    }
+
+    public List<Transaction> getTransactionsOfType(String transactionType) {
+        return transactionRepository.getAllTransactionOfType(transactionType);
     }
 }

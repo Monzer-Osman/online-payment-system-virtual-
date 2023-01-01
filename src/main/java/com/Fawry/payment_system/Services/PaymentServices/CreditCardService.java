@@ -3,7 +3,6 @@ package com.Fawry.payment_system.Services.PaymentServices;
 import com.Fawry.payment_system.Models.Transaction;
 import com.Fawry.payment_system.Models.Wallet;
 import com.Fawry.payment_system.Records.PaymentParameters;
-import com.Fawry.payment_system.Repositories.WalletRepository;
 import com.Fawry.payment_system.Services.TransactionService;
 import com.Fawry.payment_system.enums.TransactionStatus;
 import com.Fawry.payment_system.enums.TransactionType;
@@ -29,9 +28,8 @@ public class CreditCardService implements PaymentMethod {
                 parameters.userId(),
                 parameters.serviceId(),
                 parameters.amount(),
-                TransactionStatus.COMPLETED,
-                TransactionType.PaymentTransaction
-        );
+                TransactionStatus.COMPLETED.toString(),
+                TransactionType.PaymentTransaction.toString());
         return transactionService.newPaymentTransaction(transaction);
     }
 
@@ -43,8 +41,8 @@ public class CreditCardService implements PaymentMethod {
                 parameters.userId(),
                 parameters.serviceId(),
                 parameters.amount(),
-                TransactionStatus.COMPLETED,
-                TransactionType.WalletRechargeTransaction);
+                TransactionStatus.COMPLETED.toString(),
+                TransactionType.WalletRechargeTransaction.toString());
        return  transactionService.newPaymentTransaction(transaction);
     }
 }

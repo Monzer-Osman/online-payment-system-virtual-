@@ -2,6 +2,7 @@ package com.Fawry.payment_system.Controllers;
 
 import com.Fawry.payment_system.Models.Transaction;
 import com.Fawry.payment_system.Services.TransactionService;
+import com.Fawry.payment_system.enums.TransactionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +19,9 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping("/get-all-transactions")
-    public List<Transaction> getUsersTransactions(){
-        return transactionService.getAllTransactions();
+    @GetMapping("/get-all-transactions/{transactionType}")
+    public List<Transaction> getUsersTransactions(TransactionStatus transactionType){
+        return transactionService.getTransactionsOfType(transactionType.toString());
     }
 
 }

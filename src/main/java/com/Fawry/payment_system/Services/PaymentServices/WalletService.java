@@ -29,12 +29,12 @@ public class WalletService implements PaymentMethod{
         return payForService(
                 parameters.userId(),
                 parameters.userId(),
-                TransactionType.PaymentTransaction,
+                TransactionType.PaymentTransaction.toString(),
                 parameters.amount());
     }
     public TransactionStatus payForService(Integer walletId,
                                            Integer serviceId,
-                                           TransactionType transactionType,
+                                           java.lang.String transactionType,
                                            int amount){
         TransactionStatus transactionStatus;
         try{
@@ -51,8 +51,8 @@ public class WalletService implements PaymentMethod{
                 walletId,
                 serviceId,
                 amount,
-                transactionStatus,
-                transactionType);
+                transactionStatus.toString(),
+                transactionType.toString());
 
         transactionService.newPaymentTransaction(transaction);
         return transactionStatus;

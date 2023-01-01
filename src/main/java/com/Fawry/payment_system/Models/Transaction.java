@@ -1,7 +1,7 @@
 package com.Fawry.payment_system.Models;
 
 import com.Fawry.payment_system.enums.TransactionStatus;
-import com.Fawry.payment_system.enums.TransactionType;
+
 import javax.persistence.*;
 
 @Table(name = "transactions")
@@ -23,15 +23,15 @@ public class Transaction {
     private Integer receiverId;
     private int transactionAmount;
     @Column(columnDefinition = "varchar(55)")
-    private TransactionStatus transactionStatus;
+    private String transactionStatus;
     @Column(columnDefinition = "varchar(55)")
-    private TransactionType transactionType;
+    private java.lang.String transactionType;
 
     public Transaction(int transactionId,
                        Integer senderId,
                        Integer receiverId,
-                       TransactionStatus transactionStatus,
-                       TransactionType transactionType,
+                       String transactionStatus,
+                       String transactionType,
                        int transactionAmount) {
         this.transactionId = transactionId;
         this.senderId = senderId;
@@ -43,8 +43,8 @@ public class Transaction {
     public Transaction(Integer senderId,
                        Integer receiverId,
                        int transactionAmount,
-                       TransactionStatus transactionStatus,
-                       TransactionType transactionType) {
+                       String transactionStatus,
+                       String transactionType) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.transactionStatus = transactionStatus;
@@ -52,7 +52,7 @@ public class Transaction {
         this.transactionAmount = transactionAmount;
     }
 
-    public TransactionStatus getTransactionStatus() {
+    public String getTransactionStatus() {
         return transactionStatus;
     }
 
@@ -88,15 +88,15 @@ public class Transaction {
         this.transactionAmount = transactionAmount;
     }
 
-    public void setTransactionStatus(TransactionStatus transactionStatus) {
+    public void setTransactionStatus(String transactionStatus) {
         this.transactionStatus = transactionStatus;
     }
 
-    public TransactionType getTransactionType() {
+    public java.lang.String getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(TransactionType transactionType) {
+    public void setTransactionType(java.lang.String transactionType) {
         this.transactionType = transactionType;
     }
 }

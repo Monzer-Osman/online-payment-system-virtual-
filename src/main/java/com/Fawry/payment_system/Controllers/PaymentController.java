@@ -6,10 +6,7 @@ import com.Fawry.payment_system.Services.PaymentServices.PaymentMethod;
 import com.Fawry.payment_system.enums.TransactionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/Fawry-System/payment-services")
@@ -23,6 +20,19 @@ public class PaymentController {
             @Qualifier("Wallet") PaymentMethod wallet){
         this.creditCard = creditCard;
         this.wallet = wallet;
+    }
+
+    @GetMapping("/choose-payment-method/{paymentMethod}")
+    public String paymentMethod(@PathVariable String paymentMethod){
+        if(paymentMethod.equals("credit-card")){
+            return "redirect::/Fawry-System/payment-services/credit-card/pay";
+        }
+        else if(paymentMethod.equals("wallet")){
+            return "redirect::/Fawry-System/payment-services/wallet/pay";
+        }
+        else {
+            return "we're sorry this payment method is not supported yet .. :(";
+        }
     }
 
     @PostMapping("wallet/pay")

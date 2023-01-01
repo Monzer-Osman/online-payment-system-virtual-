@@ -1,5 +1,6 @@
 package com.Fawry.payment_system.Controllers;
 
+import com.Fawry.payment_system.Records.LandlineParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,14 +14,14 @@ public class LandlineController {
         this.paymentController = paymentController;
     }
 
-    @GetMapping("/monthly-receipt/{receiptNumber}")
-    public String monthlyLandline(@PathVariable String receiptNumber){
-        return "redirect::/Fawry-System/payment-services/credit-card/pay";
+    @GetMapping("/monthly-receipt/pay")
+    public String monthlyLandline(@RequestBody LandlineParameters parameters){
+        return "redirect::Fawry-System/payment-services/choose-payment-method/" + parameters.paymentMethod();
     }
 
-    @GetMapping("/quarter-receipt/{receiptNumber}")
-    public String quarterLandline(@PathVariable String receiptNumber){
-        return "redirect::/Fawry-System/payment-services/credit-card/pay";
+    @GetMapping("/quarter-receipt/pay")
+    public String quarterLandline(@RequestBody LandlineParameters parameters){
+        return "redirect::Fawry-System/payment-services/choose-payment-method/" + parameters.paymentMethod();
     }
 
 }
